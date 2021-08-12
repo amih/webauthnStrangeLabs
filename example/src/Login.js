@@ -89,7 +89,7 @@ function Login (props) {
           </Form>
         </Col>
         <Col>
-          <h3>Login</h3>
+          <h3>Login.</h3>
           <Form>
             <Form.Group>
               <Form.Label>Username</Form.Label>

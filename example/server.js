@@ -41,7 +41,11 @@ app.use(bodyParser.json())
 
 // Create webauthn
 const webauthn = new Webauthn({
-  origin: 'http://localhost:3000',
+  origin: 'https://eosinabox.amiheines.com',
+  rpName: 'AmiHeines.com EOS-in-a-Box',
+  authenticatorSelection: {authenticatorAttachment: "platform"},
+  attestation: "direct",
+  pubKeyCredParams: [{alg: -7, type: "public-key"}],
   usernameField: 'username',
   userFields: {
     username: 'username',
@@ -55,7 +59,6 @@ const webauthn = new Webauthn({
   //   search: async (search) => {/* return { [username]: User } */},
   //   delete: async (id) => {/* return boolean */},
   // },
-  rpName: 'Stranger Labs, Inc.',
 })
 
 // Mount webauthn endpoints
@@ -63,9 +66,9 @@ app.use('/webauthn', webauthn.initialize())
 
 // Endpoint without passport
 app.get('/authenticators', webauthn.authenticate(), async (req, res) => {
-  res.status(200).json([
-      await webauthn.store.get(req.session.username)
-  ].map(user => user.authenticator))
+  var userr = await webauthn.store.get(req.session.username)
+  console.log('AMIHDEBUG authenticators... userr:', userr);
+  res.status(200).json([ userr ].map(user => user.authenticator))
 })
 
 // Debug

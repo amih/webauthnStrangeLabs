@@ -20,6 +20,7 @@ class User extends React.Component {
         console.error(response.message)
         return
       }
+      console.log('AMIHDEBUG [userJs][fetchAuth] response:', response);
       return response.json()
     }).then(authenticators => {
       this.setState({ authenticators })

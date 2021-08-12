@@ -47,9 +47,9 @@ const Dictionaries = {
    * @link https://www.w3.org/TR/webauthn/#enumdef-authenticatortransport
    */
   AuthenticatorTransport: {
-    USB: 'usb',
-    NFC: 'nfc',
-    BLE: 'ble',
+    // USB: 'usb',
+    // NFC: 'nfc',
+    // BLE: 'ble',
     INTERNAL: 'internal',
   },
 }

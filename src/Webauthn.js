@@ -38,7 +38,8 @@ class Webauthn {
       logoutEndpoint: '/logout',
       enableLogging: true,
       attestation: Dictionaries.AttestationConveyancePreference.NONE,
-      authenticator: Dictionaries.AuthenticatorAttachment.CROSS_PLATFORM,
+      // authenticator: Dictionaries.AuthenticatorAttachment.CROSS_PLATFORM,
+      authenticator: Dictionaries.AuthenticatorAttachment.PLATFORM,
     }, options)
 
     const attestationOptions = Object.values(Dictionaries.AttestationConveyancePreference)
@@ -46,6 +47,7 @@ class Webauthn {
       throw new Error(`Invalid attestation value ${attestation}. Must be one of "${attestationOptions.join('", "')}".`)
     }
 
+	  console.log('AMIHDEBUG [constructor][this-conf], ', this.config);
     // Map object for field names from req param to db name.
     if (Array.isArray(this.config.userFields)) {
       // Ensure mapping
@@ -62,6 +64,7 @@ class Webauthn {
   }
 
   initialize () {
+	  console.log('AMIHDEBUG [init][this-conf], ', this.config);
     const {
       credentialEndpoint,
       assertionEndpoint,
@@ -134,6 +137,8 @@ class Webauthn {
   }
 
   login (options = {}) {
+    console.log('AMIHDEBUG [login234234] options:', options, '<, ');
+    console.log('AMIHDEBUG [login234234] this.conf:', this.config, '<, ');
     const usernameField = this.config.usernameField || options.usernameField
 
     return async (req, res, next) => {
@@ -238,6 +243,7 @@ class Webauthn {
       }
 
       if (!origin || origin !== this.config.origin) {
+	      console.log('AMIHDEBUG origin test:', origin, ' ; ', this.config.origin);
         return res.status(400).json({ message: 'mismatched origin' })
       }
 
