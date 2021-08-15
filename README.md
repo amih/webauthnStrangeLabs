@@ -1,3 +1,27 @@
+# AmiH
+
+https://webauthn.guide/
+https://github.com/EOSIO/eosio-webauthn-example-app
+https://github.com/EOSIO/eosio-webauthn-example-app/blob/master/src/server/server.ts
+https://github.com/amih/webauthnStrangeLabs/commits/master
+
+I need to take the essense of the webauthn example of B1 and incorporate it into the webauthn example of the webauthn npm package that is running on eosinabox.amiheines.com
+I will then find the webauthn pubkey, use that to create a EosioSignatureRequest, let the user SHARE it with the friend which will use Anchor wallet to create the account for the user.
+Need to let the user choose who is the trusted account or pubkey, in the future - let the trusted friend send him a more advanced threshold based owner.
+Allow the user to check if the account name is valid, give hints with local messages, a-z1-5 12 characters.
+Once the user enters a legal account, make the "check if available" button on.
+Support EOS and Jungle3.
+Change background when using Jungle3
+If account name is available, create the ESR and allow to SHARE.
+
+Refresh, check if account is created
+Allow user to send EOS from the account
+Allow user to send other tokens from the account
+How to watch balance of _any_ token on the EOS net?
+Keep all info in localstorage?
+
+
+
 # WebAuthn
 
 [![standard-readme compliant](https://img.shields.io/badge/standard--readme-OK-green.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
