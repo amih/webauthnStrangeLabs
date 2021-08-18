@@ -1,9 +1,13 @@
 # AmiH
 
 https://webauthn.guide/
+
 https://github.com/EOSIO/eosio-webauthn-example-app
+
 https://github.com/EOSIO/eosio-webauthn-example-app/blob/master/src/server/server.ts
+
 https://github.com/amih/webauthnStrangeLabs/commits/master
+
 
 I need to take the essense of the webauthn example of B1 and incorporate it into the webauthn example of the webauthn npm package that is running on eosinabox.amiheines.com
 I will then find the webauthn pubkey, use that to create a EosioSignatureRequest, let the user SHARE it with the friend which will use Anchor wallet to create the account for the user.
