@@ -24,6 +24,38 @@ Allow user to send other tokens from the account
 How to watch balance of _any_ token on the EOS net?
 Keep all info in localstorage?
 
+# Main flows in the app
+
+1. Completely new? Create an account!
+    * I will pre-populate the blockchain to be EOS
+    * Please choose a 12 character name for your account, characters can be letters in range: a-z or digits in range 1-5, I (the app) will check validity and availability of the account
+    * Choose who to trust with managing your account, enter their account here, I (the app) will check this account exists
+    * Create the keys with your phone’s security, either fingerprint or face id
+    * Almost done, here is the account creation info, send this to the trusted friend and they will create the account for you.
+2. Want to help a friend create an account?
+    * What blockchain? EOS - the main net or Jungle3 - the test net? Soon we will support additional EOSIO compatible blockchains
+    * Talk to them about choosing a legal and available account name
+    * Who will be the trusted account in case they need to regain access to their account from another phone? The owner permission.
+    * Send them this link which will pre-populate the info, they will need to create a key pair using their phone and, this will make it easier for them to create an account request which they will send back to you to sign.
+    * You will be paying a little EOS to buy the RAM for the account creation.
+3. Regain access to an account
+    * Choose the blockchain, I will pre-populate EOS for you as the default but you can change this
+    * Enter the account you own and want to regain access to
+    * Create new keys with your phone’s security
+    * Almost done, here is the change key request, send it to the trusted friend and they will send the request to the blockchain.
+4. Send tokens from your wallet to another account
+    * How much and what token?
+    * Who to send to?
+    * Want to add a short memo message?
+    * Approve with your phone’s security
+    * All done!
+5. Approve any transaction request
+    * Copy-paste the ESR (EOSIO-Signing-Request) here
+    * Approve with your phone’s security
+    * All done!
+6. Delete account keys from this phone
+    * Choose which account keys to delete, or choose “All”
+    * Are you sure? This can’t be undone, you will need the assistance of the owner permission to regain access to the account keys you delete.
 
 
 # WebAuthn
