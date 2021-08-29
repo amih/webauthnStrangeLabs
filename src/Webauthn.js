@@ -224,7 +224,7 @@ class Webauthn {
         return res.status(400).json({ message: 'bad bequest' })
       }
 
-      if (this.config.enableLogging) console.log('RESPONSE', req.body)
+      if (this.config.enableLogging) console.log('[AMIHDEBUG] [webauthn] RESPONSE', req.body)
 
       const {
         id,
