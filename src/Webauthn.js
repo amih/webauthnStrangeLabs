@@ -36,6 +36,7 @@ class Webauthn {
       assertionEndpoint: '/login',
       challengeEndpoint: '/response',
       logoutEndpoint: '/logout',
+      consoleLogEndpoint: '/consolelog',
       enableLogging: true,
       attestation: Dictionaries.AttestationConveyancePreference.NONE,
       // authenticator: Dictionaries.AuthenticatorAttachment.CROSS_PLATFORM,
@@ -70,6 +71,7 @@ class Webauthn {
       assertionEndpoint,
       challengeEndpoint,
       logoutEndpoint,
+      consoleLogEndpoint,
     } = this.config
 
     const router = express.Router()
@@ -79,7 +81,8 @@ class Webauthn {
     router.post(challengeEndpoint, this.response())
     router.post(logoutEndpoint, this.logout())
     router.get(logoutEndpoint, this.logout())
-
+    router.post(consoleLogEndpoint, this.consolelog())
+    
     return router
   }
 
@@ -199,6 +202,16 @@ class Webauthn {
           message: 'logged out',
           status: 'ok',
         })
+      })
+    }
+  }
+
+  consolelog (options = {}) {
+    return async (req, res) => {
+      console.log('AMIHDEBUG clientConsoleLogToServer', JSON.stringify(req.body));
+      return res.status(200).json({
+        message: 'console logged',
+        status: 'ok',
       })
     }
   }

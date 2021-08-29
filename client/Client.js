@@ -9,7 +9,7 @@
  * @ignore
  */
 import base64url from './base64url'
-
+import { Api, JsonRpc, Serialize } from 'eosjs';
 /**
  * Client
  * @ignore
@@ -22,6 +22,7 @@ class Client {
       assertionEndpoint: '/login',
       challengeEndpoint: '/response',
       logoutEndpoint: '/logout',
+      consoleLogEndpoint: '/consolelog',
     }
 
     Object.assign(this, defaults, options)
@@ -146,8 +147,31 @@ class Client {
     console.log('REGISTER PUBLIC KEY', publicKey)
 
     const credential = await navigator.credentials.create({ publicKey })
-    console.log('REGISTER CREDENTIAL', credential)
-
+    console.log('[AMIHDEBUG] REGISTER CREDENTIAL [Exactly what`s needed for PUB_WA key!?]', credential)
+    const response = await fetch(`${this.pathPrefix}${this.consoleLogEndpoint}`, {
+      method: 'POST',
+      credentials: 'include',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ credential, consoleLog: 'AMIHDEBUG_client_register' })
+    })
+    // https://github.com/EOSIO/eosio-webauthn-example-app/blob/0d037e4cf84b828f25ea52a1291a2f9b4fca2a97/src/client/ClientRoot.tsx
+    // appState.io.emit('addKey', {
+    //   rpid: rp.id,
+    //   id: Serialize.arrayToHex(new Uint8Array(cred.rawId)),
+    //   attestationObject: Serialize.arrayToHex(new Uint8Array(cred.response.attestationObject)),
+    //   clientDataJSON: Serialize.arrayToHex(new Uint8Array(cred.response.clientDataJSON)),
+    // });
+    // https://github.com/EOSIO/eosio-webauthn-example-app/blob/0d037e4cf84b828f25ea52a1291a2f9b4fca2a97/src/server/server.ts#L78
+    // const ser = new Serialize.SerialBuffer({textEncoder: new util.TextEncoder(), textDecoder: new util.TextDecoder()});
+    // ser.push((y[31] & 1) ? 3 : 2);
+    // ser.pushArray(x);
+    // ser.push(flagsToPresence(flags));
+    // ser.pushString(k.rpid);
+    // const compact = ser.asUint8Array();
+    // const key = Numeric.publicKeyToString({
+    //     type: Numeric.KeyType.wa,
+    //     data: compact,
+    // });
     const credentialResponse = Client.publicKeyCredentialToJSON(credential)
     console.log('REGISTER RESPONSE', credentialResponse)
 
