@@ -174,13 +174,13 @@ class Client {
     // });
     const credentialResponse = Client.publicKeyCredentialToJSON(credential)
     credentialResponse.amihdebug = {
-      txt: 'A ha! stringify pubKeyCreationOptions',
+      txt: 'A! pubKeyCreatOpt',
       pubKEY: JSON.stringify(publicKey),
-      dataDATA: data,
-      challengeCHALLENGE: challenge,
-      credentialResponseNU: credentialResponse,
     };
-    console.log('REGISTER RESPONSE', credentialResponse)
+    console.log('REGISTER RESPONSE [0]', credentialResponse)
+    console.log('REGISTER RESPONSE [1]', data)
+    console.log('REGISTER RESPONSE [2]', challenge)
+    console.log('REGISTER RESPONSE [3]', credentialResponse)
 
     return await this.sendWebAuthnResponse(credentialResponse)
   }
