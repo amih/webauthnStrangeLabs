@@ -140,13 +140,14 @@ class Client {
 
   async register (data = {}) {
     const challenge = await this.getMakeCredentialsChallenge(data)
-    console.log('REGISTER CHALLENGE', challenge)
+    console.log('[AMIHDEBUG] REGISTER DATA::', data)
+    console.log('[AMIHDEBUG] REGISTER CHALLENGE::', challenge)
 
     const publicKey = Client.preformatMakeCredReq(challenge)
-    console.log('REGISTER PUBLIC KEY', publicKey)
+    console.log('[AMIHDEBUG] REGISTER PUBLIC KEY', publicKey)
 
     const credential = await navigator.credentials.create({ publicKey })
-    console.log('[AMIHDEBUG] REGISTER CREDENTIAL [Exactly what`s needed for PUB_WA key!?]', credential)
+    console.log('[AMIHDEBUG] REGISTER CREDENTIAL [navigator.credentials.create] [Exactly what`s needed for PUB_WA key!?]', credential)
     //// const response = await fetch(`${this.pathPrefix}${this.consoleLogEndpoint}`, {
     ////   method: 'POST',
     ////   credentials: 'include',
@@ -175,6 +176,9 @@ class Client {
     credentialResponse.amihdebug = {
       txt: 'A ha! stringify pubKeyCreationOptions',
       pubKEY: JSON.stringify(publicKey),
+      dataDATA: data,
+      challengeCHALLENGE: challenge,
+      credentialResponseNU: credentialResponse,
     };
     console.log('REGISTER RESPONSE', credentialResponse)
 
