@@ -174,6 +174,7 @@ class Client {
     const credentialResponse = Client.publicKeyCredentialToJSON(credential)
     credentialResponse.amihdebug = {
       txt: 'A ha!',
+      pubKEY: publicKey,
     };
     console.log('REGISTER RESPONSE', credentialResponse)
 
