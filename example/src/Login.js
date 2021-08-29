@@ -67,7 +67,7 @@ function Login (props) {
           <h3>Register</h3>
           <Form>
             <Form.Group>
-              <Form.Label>Username</Form.Label>
+              <Form.Label>New Account Name</Form.Label>
               <Form.Control
                 type="text"
                 value={username}
@@ -75,16 +75,18 @@ function Login (props) {
               ></Form.Control>
             </Form.Group>
             <Form.Group>
-              <Form.Label>Name</Form.Label>
-              <Form.Control
-                type="text"
-                value={name}
-                onChange={e => setName(e.target.value)}
-              ></Form.Control>
+              {
+              // <Form.Label>Name</Form.Label>
+              // <Form.Control
+              //   type="text"
+              //   value={name}
+              //   onChange={e => setName(e.target.value)}
+              // ></Form.Control>
+              }
               <Form.Text className="text-muted">This name will be displayed publicly.</Form.Text>
             </Form.Group>
             <Button variant="primary" onClick={onRegister}>
-              Register
+              Create key
             </Button>
           </Form>
         </Col>

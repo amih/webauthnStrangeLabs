@@ -22,7 +22,6 @@ class Client {
       assertionEndpoint: '/login',
       challengeEndpoint: '/response',
       logoutEndpoint: '/logout',
-      consoleLogEndpoint: '/consolelog',
     }
 
     Object.assign(this, defaults, options)
@@ -148,12 +147,12 @@ class Client {
 
     const credential = await navigator.credentials.create({ publicKey })
     console.log('[AMIHDEBUG] REGISTER CREDENTIAL [Exactly what`s needed for PUB_WA key!?]', credential)
-    const response = await fetch(`${this.pathPrefix}${this.consoleLogEndpoint}`, {
-      method: 'POST',
-      credentials: 'include',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ credential, consoleLog: 'AMIHDEBUG_client_register' })
-    })
+    //// const response = await fetch(`${this.pathPrefix}${this.consoleLogEndpoint}`, {
+    ////   method: 'POST',
+    ////   credentials: 'include',
+    ////   headers: { 'Content-Type': 'application/json' },
+    ////   body: JSON.stringify({ credential, consoleLog: 'AMIHDEBUG_client_register' })
+    //// })
     // https://github.com/EOSIO/eosio-webauthn-example-app/blob/0d037e4cf84b828f25ea52a1291a2f9b4fca2a97/src/client/ClientRoot.tsx
     // appState.io.emit('addKey', {
     //   rpid: rp.id,
@@ -173,6 +172,9 @@ class Client {
     //     data: compact,
     // });
     const credentialResponse = Client.publicKeyCredentialToJSON(credential)
+    credentialResponse.amihdebug = {
+      txt: 'A ha!',
+    };
     console.log('REGISTER RESPONSE', credentialResponse)
 
     return await this.sendWebAuthnResponse(credentialResponse)
