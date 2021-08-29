@@ -42,6 +42,7 @@ app.use(bodyParser.json())
 // Create webauthn
 const webauthn = new Webauthn({
   origin: 'https://eosinabox.amiheines.com',
+  rpId: 'https://eosinabox.amiheines.com',
   rpName: 'AmiHeines.com EOS-in-a-Box',
   authenticatorSelection: {authenticatorAttachment: "platform"},
   attestation: "direct",

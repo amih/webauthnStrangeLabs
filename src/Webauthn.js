@@ -32,6 +32,7 @@ class Webauthn {
       userFields: ['name', 'displayName'],
       store: new MemoryAdapter(),
       rpName: 'ACME Corporation',
+      rpId: 'http://localhost:3000',
       credentialEndpoint: '/register',
       assertionEndpoint: '/login',
       challengeEndpoint: '/response',
@@ -124,6 +125,7 @@ class Webauthn {
         .setUserInfo(user)
         .setAttestationType(this.config.attestation)
         .setAuthenticator(this.config.authenticator)
+        .setRelyingPartyInfo({ id: this.config.rpId     || options.rpId   })
         .setRelyingPartyInfo({ name: this.config.rpName || options.rpName })
         .build({ status: 'ok' })
 
